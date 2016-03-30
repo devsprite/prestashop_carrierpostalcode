@@ -27,6 +27,9 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
+/**
+ * @property string table_name
+ */
 class CarrierPostalCode extends CarrierModule
 {
     private $html = "";
@@ -76,7 +79,7 @@ class CarrierPostalCode extends CarrierModule
                     PRIMARY KEY (`id_carrierpostalcode`)
                     ) ENGINE = '._MYSQL_ENGINE_;
 
-        if (!Db::getInstance()->Execute($sql)) {
+        if (!Db::getInstance()->execute($sql)) {
             return false;
         }
         return true;
@@ -121,7 +124,7 @@ class CarrierPostalCode extends CarrierModule
             $rangeweight->delimiter2 = '10000';
             $rangeweight->add();
 
-            $zones = Zone::getZOnes(true);
+            $zones = Zone::getZones(true);
             foreach ($zones as $zone) {
                 Db::getInstance()->insert('carrier_zone', array('id_carrier' => $carrier->id,
                     'id_zone' => $zone['id_zone']));
@@ -155,7 +158,7 @@ class CarrierPostalCode extends CarrierModule
 
     private function removeMyTable()
     {
-        if (!Db::getInstance()->Execute('DROP TABLE `'._DB_PREFIX_.$this->table_name.'`')) {
+        if (!Db::getInstance()->execute('DROP TABLE `'._DB_PREFIX_.$this->table_name.'`')) {
             return false;
         }
         return true;
@@ -444,7 +447,7 @@ class CarrierPostalCode extends CarrierModule
         return $helper->generateList($content, $fields_list);
     }
 
-    private function getsingle($id_carrierpostalcode)
+    private function getSingle($id_carrierpostalcode)
     {
         return Db::getInstance()->getRow('
             SELECT *
@@ -454,7 +457,7 @@ class CarrierPostalCode extends CarrierModule
 
     private function getAll()
     {
-        return Db::getInstance()->ExecuteS(
+        return Db::getInstance()->executeS(
             'SELECT *
             FROM '._DB_PREFIX_.$this->table_name
         );
