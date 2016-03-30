@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+	<name>carrierpostalcode</name>
+	<displayName><![CDATA[Prix par code postal]]></displayName>
+	<version><![CDATA[1.0.1]]></version>
+	<description><![CDATA[Affecte un prix de transport suivant le code postal de livraison]]></description>
+	<author><![CDATA[Dominique]]></author>
+	<tab><![CDATA[shipping_logistics]]></tab>
+	<confirmUninstall><![CDATA[Etes-vous sur de vouloir désinstaller le module ?]]></confirmUninstall>
+	<is_configurable>1</is_configurable>
+	<need_instance>0</need_instance>
+	<limited_countries></limited_countries>
+</module>
